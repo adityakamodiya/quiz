@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+
+
+<body>
+    <div id="wrapper">
+        <div class="question-box"></div>
+        <div class="option-box"></div>
+    </div>
+    <script>
+        let question_box = document.querySelector(".question-box")
+        let option_box = document.querySelector(".option-box")
+        let questions = [
+            {
+                question: "2+2",
+                answer: "4",
+                options: ["0", "2", "4", "5"]
+            },
+            {
+                question: "2-7",
+                answer: "-5",
+                options: ["-5", "2", "4", "5"]
+            },
+            {
+                question: "0+0",
+                answer: "0",
+                options: ["0", "2", "4", "5"]
+            },
+            {
+                question: "2+6",
+                answer: "8",
+                options: ["8", "2", "4", "5"]
+            },
+            {
+                question: "2+1",
+                answer: "3",
+                options: ["0", "3", "4", "5"]
+            },
+            {
+                question: "34+4",
+                answer: "38",
+                options: ["0", "2", "4", "38"]
+            },
+            {
+                question: "10+18",
+                answer: "4",
+                options: ["0", "2", "28", "5"]
+            },
+            {
+                question: "12+13",
+                answer: "25",
+                options: ["0", "2", "25", "5"]
+            },
+            {
+                question: "11+11",
+                answer: "22",
+                options: ["22", "2", "4", "5"]
+            },
+
+            {
+                question: "5+5",
+                answer: "10",
+                options: ["0", "10", "4", "5"]
+            },
+
+
+
+        ]
+        console.log(questions[9].options)
+        console.log(questions[9].answer)
+        let input
+        let i = 0
+        let score = 0
+        function showoption() {
+            question_box.innerHTML = questions[i].question
+            let j = 0
+            option_box.innerHTML = " "
+            for (let k = 0; k < 4; k++) {
+
+                // console.log(i,j)
+                input = document.createElement("input")
+                input.type = "radio"
+                input.name ='aa'
+                input.value = questions[i].options[j]
+                
+                let span = document.createElement("span")
+                span.innerHTML = questions[i].options[j]
+                input.style.padding = "5px"
+                span.style.margin = "5px"
+                span.style.textAlign = "center"
+                option_box.append(input)
+                option_box.append(span)
+                j++
+            }
+            i++
+        
+        }
+        
+        let ckeckedop = ''
+        if(input.checked)
+        {
+                questions[]
+        }
+        
+        // console.log(check())
+        let interval = setInterval(() => {
+            // console.log(questions[i].answer)
+
+            showoption();                       
+            if(input.value==questions[i].answer)
+            {           
+                score++ 
+            }   
+        }, 3000)
+
+
+    </script>
+</body>
+
+</html>
