@@ -14,8 +14,10 @@
     <div id="wrapper">
         <div class="question-box"></div>
         <div class="option-box"></div>
+        <div class="timer"></div>
     </div>
     <script>
+        let timer = document.querySelector(".timer")
         let question_box = document.querySelector(".question-box")
         let option_box = document.querySelector(".option-box")
         let questions = [
@@ -74,11 +76,13 @@
 
 
         ]
-        console.log(questions[9].options)
-        console.log(questions[9].answer)
+        // console.log(questions[9].options)
+        // console.log(questions[9].answer)
         let input
         let i = 0
         let score = 0
+        let time = 1
+
         function showoption() {
             question_box.innerHTML = questions[i].question
             let j = 0
@@ -88,9 +92,9 @@
                 // console.log(i,j)
                 input = document.createElement("input")
                 input.type = "radio"
-                input.name ='aa'
+                input.name = 'options'
                 input.value = questions[i].options[j]
-                
+
                 let span = document.createElement("span")
                 span.innerHTML = questions[i].options[j]
                 input.style.padding = "5px"
@@ -101,27 +105,66 @@
                 j++
             }
             i++
-        
+
         }
-        
-        let ckeckedop = ''
-        if(input.checked)
-        {
-                questions[]
-        }
-        
-        // console.log(check())
+        let storearray = []
+
+        showoption();
+        timer.innerHTML = time;
+
         let interval = setInterval(() => {
-            // console.log(questions[i].answer)
+            if (time === 0) {
+                time = 1
+                timer.innerHTML = time
 
-            showoption();                       
-            if(input.value==questions[i].answer)
-            {           
-                score++ 
-            }   
-        }, 3000)
+                //store user answer
+                checkradio()
+
+                //if all questions are done
+                if (questions.length === i) {
+                    clearInterval(interval)
+                    calculateScore()
+                    alert("your score is"+score)
+                }
+                else {
+                    //change question                
+                    showoption()
+                }
+            }
+            else {
+                timer.innerHTML = --time;
+            }
 
 
+
+        }, 1000)
+
+
+
+        function checkradio() {
+            let radios = document.querySelectorAll("input")
+            for (let i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    storearray.push(radios[i].value)
+                }
+            }
+            console.log(storearray)
+        }
+
+        function calculateScore()
+        {
+            for(let p =0 ;i<storearray.length;p++){
+            for(let i=0;i<questions.length;i++)
+            {
+                document.write(questions[i].answer)
+                if(storearray[p] === questions[i].answer)
+                {
+                    
+                }
+            }
+            
+        }}
+calculateScore();
     </script>
 </body>
 
