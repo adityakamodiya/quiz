@@ -41,37 +41,37 @@
                 answer: "8",
                 options: ["8", "2", "4", "5"]
             },
-            {
-                question: "2+1",
-                answer: "3",
-                options: ["0", "3", "4", "5"]
-            },
-            {
-                question: "34+4",
-                answer: "38",
-                options: ["0", "2", "4", "38"]
-            },
-            {
-                question: "10+18",
-                answer: "4",
-                options: ["0", "2", "28", "5"]
-            },
-            {
-                question: "12+13",
-                answer: "25",
-                options: ["0", "2", "25", "5"]
-            },
-            {
-                question: "11+11",
-                answer: "22",
-                options: ["22", "2", "4", "5"]
-            },
+            // {
+            //     question: "2+1",
+            //     answer: "3",
+            //     options: ["0", "3", "4", "5"]
+            // },
+            // {
+            //     question: "34+4",
+            //     answer: "38",
+            //     options: ["0", "2", "4", "38"]
+            // },
+            // {
+            //     question: "10+18",
+            //     answer: "28",
+            //     options: ["0", "2", "28", "5"]
+            // },
+            // {
+            //     question: "12+13",
+            //     answer: "25",
+            //     options: ["0", "2", "25", "5"]
+            // },
+            // {
+            //     question: "11+11",
+            //     answer: "22",
+            //     options: ["22", "2", "4", "5"]
+            // },
 
-            {
-                question: "5+5",
-                answer: "10",
-                options: ["0", "10", "4", "5"]
-            },
+            // {
+            //     question: "5+5",
+            //     answer: "10",
+            //     options: ["0", "10", "4", "5"]
+            // },
 
 
 
@@ -81,7 +81,7 @@
         let input
         let i = 0
         let score = 0
-        let time = 1
+        let time = 3
 
         function showoption() {
             question_box.innerHTML = questions[i].question
@@ -114,7 +114,7 @@
 
         let interval = setInterval(() => {
             if (time === 0) {
-                time = 1
+                time = 3
                 timer.innerHTML = time
 
                 //store user answer
@@ -124,7 +124,7 @@
                 if (questions.length === i) {
                     clearInterval(interval)
                     calculateScore()
-                    alert("your score is"+score)
+                    
                 }
                 else {
                     //change question                
@@ -148,23 +148,26 @@
                     storearray.push(radios[i].value)
                 }
             }
-            console.log(storearray)
+            // console.log(storearray)
         }
 
         function calculateScore()
         {
-            for(let p =0 ;i<storearray.length;p++){
-            for(let i=0;i<questions.length;i++)
+            for(let i=0;i<storearray.length;i++)
             {
-                document.write(questions[i].answer)
-                if(storearray[p] === questions[i].answer)
+            // console.log("hii")
+            
+                if(storearray[i]=== questions[i].answer)
                 {
-                    
+
+                    // console.log("hlow")
+                    score++
+
                 }
             }
-            
-        }}
-calculateScore();
+            alert(score)
+        }
+// calculateScore();
     </script>
 </body>
 
