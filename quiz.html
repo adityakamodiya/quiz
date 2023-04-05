@@ -11,10 +11,12 @@
 
 
 <body>
+    <button class="timer"></button>
     <div id="wrapper">
+       
         <div class="question-box"></div>
         <div class="option-box"></div>
-        <div class="timer"></div>
+        
     </div>
     <script>
         let timer = document.querySelector(".timer")
@@ -76,15 +78,16 @@
 
 
         ]
-        // console.log(questions[9].options)
-        // console.log(questions[9].answer)
+
         let input
         let i = 0
         let score = 0
         let time = 3
+        let random 
 
         function showoption() {
-            question_box.innerHTML = questions[i].question
+            random = Math.floor((Math.random()*questions.length))
+                 question_box.innerHTML = questions[random].question
             let j = 0
             option_box.innerHTML = " "
             for (let k = 0; k < 4; k++) {
@@ -93,10 +96,10 @@
                 input = document.createElement("input")
                 input.type = "radio"
                 input.name = 'options'
-                input.value = questions[i].options[j]
+                input.value = questions[random].options[j]
 
                 let span = document.createElement("span")
-                span.innerHTML = questions[i].options[j]
+                span.innerHTML = questions[random].options[j]
                 input.style.padding = "5px"
                 span.style.margin = "5px"
                 span.style.textAlign = "center"
@@ -111,6 +114,7 @@
 
         showoption();
         timer.innerHTML = time;
+        
 
         let interval = setInterval(() => {
             if (time === 0) {
@@ -123,12 +127,14 @@
                 //if all questions are done
                 if (questions.length === i) {
                     clearInterval(interval)
+                    // console.log(random.length)
                     calculateScore()
                     
                 }
                 else {
                     //change question                
                     showoption()
+                    
                 }
             }
             else {
@@ -148,22 +154,24 @@
                     storearray.push(radios[i].value)
                 }
             }
-            // console.log(storearray)
+            console.log(storearray)
         }
 
         function calculateScore()
         {
-            for(let i=0;i<storearray.length;i++)
+            for(let i=0;i<random.length;i++)
             {
+                let u = random.length
             // console.log("hii")
             
                 if(storearray[i]=== questions[i].answer)
                 {
 
-                    // console.log("hlow")
+                    console.log("hlow")
                     score++
 
                 }
+                u++
             }
             alert(score)
         }
